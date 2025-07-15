@@ -1,46 +1,150 @@
-# Getting Started with Create React App
+# TalentHive Client
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React TypeScript application for the TalentHive talent barter platform.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Multi-page Application**: Complete routing with React Router
+- **Authentication**: Login and registration with JWT tokens
+- **Real-time Features**: Socket.IO integration for live messaging
+- **Mobile-first Design**: Responsive design with Tailwind CSS
+- **Interactive Dashboard**: User dashboard with stats and quick actions
+- **Barter System**: Create and manage skill exchange requests
+- **Meetups**: Organize and join local skill-sharing events
+- **Profile Management**: Comprehensive user profiles with skills
+- **Search & Discovery**: Find users and skills
 
-### `npm start`
+## Pages
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Public Pages
+- **Home** (`/`) - Landing page with features and statistics
+- **Login** (`/login`) - User authentication
+- **Register** (`/register`) - Multi-step user registration
+- **About** (`/about`) - Information about TalentHive
+- **Help** (`/help`) - Support and documentation
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Protected Pages
+- **Dashboard** (`/dashboard`) - Main user dashboard
+- **Profile** (`/profile`) - User profile view
+- **Edit Profile** (`/profile/edit`) - Profile editing
+- **Barter Requests** (`/barter`) - Browse and manage barters
+- **Create Barter** (`/barter/create`) - Create new barter request
+- **Meetups** (`/meetups`) - Local meetup events
+- **Messages** (`/messages`) - Real-time messaging
+- **Skills** (`/skills`) - Skill discovery and categories
+- **Search** (`/search`) - User and skill search
+- **Notifications** (`/notifications`) - Activity notifications
+- **Settings** (`/settings`) - Account preferences
 
-### `npm test`
+## Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **React 18** with TypeScript
+- **React Router** for navigation
+- **Tailwind CSS** for styling
+- **Heroicons** for icons
+- **Axios** for API calls
+- **Socket.IO** for real-time features
+- **Context API** for state management
 
-### `npm run build`
+## Getting Started
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. **Set up environment variables**:
+   ```bash
+   cp .env.example .env
+   ```
+   Edit `.env` with your API endpoints:
+   ```
+   REACT_APP_API_URL=http://localhost:5000
+   REACT_APP_SOCKET_URL=http://localhost:5000
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. **Start the development server**:
+   ```bash
+   npm start
+   ```
 
-### `npm run eject`
+4. **Build for production**:
+   ```bash
+   npm run build
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Development
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Project Structure
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+src/
+├── components/          # Reusable components
+│   ├── Layout.tsx      # Main layout with navigation
+│   ├── MobileNav.tsx   # Mobile navigation
+│   ├── PrivateRoute.tsx # Protected route wrapper
+│   └── LoadingSpinner.tsx # Loading component
+├── contexts/           # React contexts
+│   ├── AuthContext.tsx # Authentication state
+│   └── SocketContext.tsx # Socket.IO connection
+├── pages/              # Page components
+│   ├── Home.tsx        # Landing page
+│   ├── Login.tsx       # Login page
+│   ├── Register.tsx    # Registration page
+│   ├── Dashboard.tsx   # Main dashboard
+│   ├── Profile.tsx     # User profile
+│   ├── BarterRequests.tsx # Barter listing
+│   └── ...            # Other pages
+├── App.tsx             # Main app component
+└── index.tsx          # Entry point
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Key Features
 
-## Learn More
+- **Responsive Design**: Mobile-first approach with Tailwind CSS
+- **Authentication Flow**: JWT-based authentication with protected routes
+- **Real-time Communication**: Socket.IO for instant messaging
+- **State Management**: React Context for global state
+- **TypeScript**: Full type safety throughout the application
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Styling
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The app uses Tailwind CSS with custom components:
+- `.btn` - Button styles with variants
+- `.card` - Card container styles
+- `.badge` - Badge/tag styles
+- `.form-input` - Form input styles
+- `.mobile-nav` - Mobile navigation styles
+
+## API Integration
+
+The client connects to the TalentHive backend API with:
+- Authentication endpoints
+- User management
+- Barter requests
+- Meetup management
+- Real-time messaging
+- File uploads
+
+## Future Enhancements
+
+- [ ] Progressive Web App (PWA) support
+- [ ] Offline functionality
+- [ ] Push notifications
+- [ ] Advanced search filters
+- [ ] Dark mode support
+- [ ] Multi-language support (Swahili)
+- [ ] Video calling integration
+- [ ] Advanced analytics dashboard
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
+
+## License
+
+This project is licensed under the MIT License.

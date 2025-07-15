@@ -1,59 +1,62 @@
-# 🐝 TalentHive - University Student Skill Exchange Platform
+# TalentHive 🐝
 
-**TalentHive** is a comprehensive digital platform designed specifically for university students in Kenya and similar communities to exchange skills and services through a talent barter system. The platform enables students to trade their expertise freely, supports physical meetups for in-person collaboration, and provides a foundation for future monetization.
+A comprehensive talent barter platform designed for university students in Kenya to exchange skills, organize meetups, and build meaningful connections without monetary transactions.
 
-## ✨ Key Features
+## 🌟 Features
 
-### 🎓 Core Functionality
-- **Talent Barter System**: Students can exchange skills without monetary transactions
-- **Physical Meetup Support**: Organize and join in-person skill exchange sessions
-- **University-Focused**: Tailored for Kenyan universities and similar academic communities
-- **Skill Matching Algorithm**: Intelligent suggestions based on location, skills, and compatibility
-- **Free Usage**: No fees during the initial phase to encourage adoption
+### Core Platform Features
+- **Talent Barter System**: Exchange skills without money - perfect for students
+- **Physical Meet-Up Support**: Connect locally for in-person collaborations
+- **University Community Focus**: Tailored for Kenyan universities and students
+- **Real-time Messaging**: Chat with other students and coordinate exchanges
+- **Rating & Review System**: Build trust through peer feedback
+- **Mobile-First Design**: Optimized for mobile devices and low-bandwidth usage
 
-### 🛠️ Technical Features
-- **Real-time Messaging**: In-app chat system with Socket.IO
-- **User Profiles**: Comprehensive profiles with skills, ratings, and reviews
-- **Admin Dashboard**: User moderation, analytics, and platform management
-- **Review System**: Peer-to-peer rating and feedback system
-- **Mobile-First Design**: Responsive UI optimized for mobile devices
-- **Multi-language Support**: English, Swahili, and local languages
+### Advanced Features
+- **Smart Matching Algorithm**: Find compatible skill exchange partners
+- **Meetup Organization**: Create and join local skill-sharing events
+- **Multi-language Support**: English and Swahili (planned)
+- **Future M-Pesa Integration**: Monetization ready for future phases
+- **Admin Dashboard**: Content moderation and platform management
+- **Dispute Resolution**: Fair conflict resolution system
 
-### 🚀 Future Monetization
-- **M-Pesa Integration**: Mobile money payments for premium services
-- **PayPal & PayBill**: Multiple payment options for flexibility
-- **Transaction Tracking**: Comprehensive financial reporting
-- **Premium Features**: Advanced matching, verification, and analytics
+## 🏗️ Architecture
 
-## 🏗️ Project Structure
+### Frontend (React TypeScript)
+- **Multi-page Application**: 19+ interactive pages with React Router
+- **Authentication System**: JWT-based login/register with protected routes
+- **Responsive Design**: Mobile-first approach with Tailwind CSS
+- **Real-time Features**: Socket.IO integration for live messaging
+- **State Management**: React Context for global state
+- **Professional UI/UX**: Modern design with Heroicons
 
-```
-talenthive/
-├── server.js                  # Main server entry point
-├── package.json              # Node.js dependencies
-├── .env.example              # Environment variables template
-├── models/                   # Database models
-│   ├── User.js              # User profiles and authentication
-│   ├── BarterRequest.js     # Skill exchange requests
-│   ├── Message.js           # In-app messaging
-│   ├── Meetup.js            # Physical meetup management
-│   └── Review.js            # User reviews and ratings
-├── routes/                   # API routes
-│   ├── auth.js              # Authentication endpoints
-│   ├── users.js             # User management
-│   ├── barter.js            # Barter request handling
-│   ├── messages.js          # Messaging system
-│   ├── meetups.js           # Meetup management
-│   ├── skills.js            # Skill discovery and search
-│   └── admin.js             # Admin dashboard
-├── middleware/               # Express middleware
-│   └── auth.js              # Authentication middleware
-├── client/                   # React frontend
-│   ├── src/
-│   ├── public/
-│   └── package.json
-└── README.md                # This file
-```
+### Backend (Node.js/Express)
+- **RESTful API**: Comprehensive endpoints for all features
+- **MongoDB Database**: 5 data models for users, barters, messages, meetups, reviews
+- **JWT Authentication**: Secure token-based authentication
+- **Socket.IO Integration**: Real-time messaging and notifications
+- **File Upload Support**: Profile pictures and media handling
+- **Admin Analytics**: User metrics and platform insights
+
+## 📱 Application Pages
+
+### Public Pages
+- **Home** (`/`) - Landing page with features and statistics
+- **Login** (`/login`) - User authentication
+- **Register** (`/register`) - Multi-step registration with Kenyan universities
+- **About** (`/about`) - Platform information
+- **Help** (`/help`) - Support and documentation
+
+### Protected Pages
+- **Dashboard** (`/dashboard`) - Main user hub with stats and quick actions
+- **Profile** (`/profile`) - User profile management
+- **Barter Requests** (`/barter`) - Browse and manage skill exchanges
+- **Meetups** (`/meetups`) - Local meetup events
+- **Messages** (`/messages`) - Real-time messaging system
+- **Skills** (`/skills`) - Skill discovery and categories
+- **Search** (`/search`) - Find users and opportunities
+- **Notifications** (`/notifications`) - Activity updates
+- **Settings** (`/settings`) - Account preferences
 
 ## 🚀 Getting Started
 
@@ -62,233 +65,221 @@ talenthive/
 - MongoDB (local or cloud instance)
 - npm or yarn package manager
 
-### Installation
+### Backend Setup
 
-1. **Clone the repository**
+1. **Clone and navigate to server directory**:
    ```bash
-   git clone https://github.com/yourusername/talenthive.git
-   cd talenthive
+   git clone <repository-url>
+   cd server
    ```
 
-2. **Install backend dependencies**
+2. **Install dependencies**:
    ```bash
    npm install
    ```
 
-3. **Install frontend dependencies**
-   ```bash
-   cd client
-   npm install
-   cd ..
-   ```
-
-4. **Set up environment variables**
+3. **Set up environment variables**:
    ```bash
    cp .env.example .env
-   # Edit .env with your configuration
    ```
-
-5. **Configure MongoDB**
-   - Update `MONGODB_URI` in `.env`
-   - Default: `mongodb://localhost:27017/talenthive`
-
-6. **Start the development servers**
-   ```bash
-   # Start backend (Terminal 1)
-   npm run dev
+   Configure your `.env` file:
+   ```env
+   NODE_ENV=development
+   PORT=5000
+   MONGODB_URI=mongodb://localhost:27017/talenthive
+   JWT_SECRET=your-super-secret-jwt-key
+   JWT_EXPIRE=7d
    
-   # Start frontend (Terminal 2)
-   npm run client
+   # File Upload
+   MAX_FILE_UPLOAD=1000000
+   FILE_UPLOAD_PATH=./public/uploads
+   
+   # M-Pesa Configuration (Future)
+   MPESA_CONSUMER_KEY=your-mpesa-consumer-key
+   MPESA_CONSUMER_SECRET=your-mpesa-consumer-secret
+   MPESA_SHORTCODE=your-mpesa-shortcode
+   
+   # PayPal Configuration (Future)
+   PAYPAL_CLIENT_ID=your-paypal-client-id
+   PAYPAL_CLIENT_SECRET=your-paypal-client-secret
    ```
 
-7. **Access the application**
+4. **Start the server**:
+   ```bash
+   npm run dev
+   ```
+
+### Frontend Setup
+
+1. **Navigate to client directory**:
+   ```bash
+   cd client
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables**:
+   ```bash
+   cp .env.example .env
+   ```
+   Configure your `.env` file:
+   ```env
+   REACT_APP_API_URL=http://localhost:5000
+   REACT_APP_SOCKET_URL=http://localhost:5000
+   ```
+
+4. **Start the development server**:
+   ```bash
+   npm start
+   ```
+
+5. **Access the application**:
    - Frontend: http://localhost:3000
    - Backend API: http://localhost:5000
 
-## 🎯 User Journey
+## 🗄️ Database Models
 
-### For Students (Core Users)
+### User Model
+- Personal information (name, email, avatar)
+- University details (institution, course, year)
+- Location (county, town)
+- Skills offered and needed
+- Ratings and verification status
 
-1. **Registration & Profile Setup**
-   - Create account with university email
-   - Complete profile with skills offered/needed
-   - Set location and availability preferences
+### Barter Request Model
+- Skill exchange details
+- Status tracking (pending, active, completed)
+- Participants and progress
+- Future monetization fields
 
-2. **Skill Discovery**
-   - Browse available skills by category
-   - Search for specific skills or users
-   - View compatibility scores with other users
+### Message Model
+- Real-time messaging system
+- Conversation threads
+- Read status and timestamps
 
-3. **Barter Request Process**
-   - Create barter request specifying skills needed/offered
-   - Receive and evaluate incoming requests
-   - Negotiate terms and schedule meetups
+### Meetup Model
+- Event organization
+- Location and participant management
+- Announcements and updates
 
-4. **Meetup Coordination**
-   - Organize physical meetups for skill exchange
-   - Join existing meetups in your area
-   - Coordinate through in-app messaging
+### Review Model
+- User ratings and feedback
+- Moderation and dispute resolution
 
-5. **Review & Rating**
-   - Rate experiences after completion
-   - Build reputation through positive reviews
-   - Provide feedback to improve the platform
+## 🔌 API Endpoints
 
-### For Administrators
-
-1. **User Management**
-   - Monitor user registrations and activity
-   - Verify user accounts and profiles
-   - Handle user disputes and reports
-
-2. **Platform Analytics**
-   - Track user engagement and growth
-   - Monitor popular skills and trends
-   - Generate usage reports and insights
-
-3. **Content Moderation**
-   - Review and approve user-generated content
-   - Manage inappropriate behavior
-   - Maintain platform quality standards
-
-## 🔧 API Documentation
-
-### Authentication Endpoints
+### Authentication
 - `POST /api/auth/register` - User registration
 - `POST /api/auth/login` - User login
 - `GET /api/auth/me` - Get current user
 - `POST /api/auth/logout` - User logout
 
-### User Management
-- `GET /api/users/profile/:id` - Get user profile
-- `PUT /api/users/profile` - Update user profile
-- `GET /api/users/search` - Search users
+### Users
+- `GET /api/users` - Get all users
+- `GET /api/users/:id` - Get user by ID
+- `PUT /api/users/:id` - Update user profile
 - `GET /api/users/suggestions` - Get user suggestions
 
-### Barter System
-- `POST /api/barter/create` - Create barter request
-- `GET /api/barter` - Get barter requests
-- `PUT /api/barter/:id/status` - Update barter status
-- `POST /api/barter/:id/review` - Add review
-
-### Messaging
-- `POST /api/messages/send` - Send message
-- `GET /api/messages/conversations` - Get conversations
-- `GET /api/messages/conversation/:userId` - Get messages
+### Barters
+- `GET /api/barter` - Get all barters
+- `POST /api/barter` - Create new barter
+- `GET /api/barter/:id` - Get barter by ID
+- `PUT /api/barter/:id` - Update barter
+- `POST /api/barter/:id/accept` - Accept barter request
 
 ### Meetups
-- `POST /api/meetups/create` - Create meetup
-- `GET /api/meetups` - Get meetups
+- `GET /api/meetups` - Get all meetups
+- `POST /api/meetups` - Create new meetup
 - `POST /api/meetups/:id/join` - Join meetup
-- `GET /api/meetups/nearby` - Get nearby meetups
+- `POST /api/meetups/:id/announce` - Make announcement
+
+### Messages
+- `GET /api/messages` - Get conversations
+- `POST /api/messages` - Send message
+- `PUT /api/messages/:id/read` - Mark as read
 
 ### Skills
 - `GET /api/skills/categories` - Get skill categories
 - `GET /api/skills/popular` - Get popular skills
-- `GET /api/skills/search` - Search skills
 - `GET /api/skills/trending` - Get trending skills
 
-## 🎨 Design Philosophy
+## 🎯 User Journey
 
-### Mobile-First Approach
-- Responsive design optimized for mobile devices
-- Touch-friendly interface elements
-- Minimal bandwidth usage for low-data environments
-- Progressive Web App (PWA) capabilities
+1. **Discovery**: Visit landing page and learn about TalentHive
+2. **Registration**: Multi-step signup with Kenyan university details
+3. **Profile Setup**: Add skills, bio, and preferences
+4. **Dashboard**: Access personalized hub with stats and recommendations
+5. **Skill Exchange**: Browse barters, create requests, and connect with peers
+6. **Meetups**: Join local events and organize skill-sharing sessions
+7. **Communication**: Real-time messaging and coordination
+8. **Growth**: Build reputation through successful exchanges and reviews
 
-### Kenyan Context
-- Support for Kenyan universities and institutions
-- Integration with local payment systems (M-Pesa)
-- Multi-language support (English, Swahili, local languages)
-- Cultural sensitivity in design and functionality
+## 🌍 Kenyan Context
 
-### Accessibility
-- WCAG 2.1 AA compliance
-- Screen reader compatibility
-- High contrast mode support
-- Keyboard navigation support
+### Supported Universities
+- University of Nairobi
+- Kenyatta University
+- Moi University
+- Strathmore University
+- JKUAT (Jomo Kenyatta University of Agriculture and Technology)
+- And 30+ other Kenyan institutions
 
-## 🔐 Security Features
+### Local Features
+- All 47 Kenyan counties supported
+- Local currency considerations (KES)
+- Future M-Pesa integration
+- Cultural context and local language support
+- Mobile-first design for local connectivity
 
-- **Authentication**: JWT-based secure authentication
-- **Input Validation**: Comprehensive input sanitization
-- **Rate Limiting**: Protection against abuse and spam
-- **CORS**: Proper cross-origin resource sharing
-- **Helmet**: Security headers for protection
-- **Data Privacy**: GDPR-compliant data handling
+## 🔮 Future Roadmap
 
-## 📊 Analytics & Monitoring
-
-### User Analytics
-- Registration trends and demographics
-- Skill popularity and demand
-- User engagement metrics
-- Barter success rates
-
-### Platform Health
-- API performance monitoring
-- Database query optimization
-- Error tracking and reporting
-- Uptime and availability metrics
-
-## 🌍 Localization
-
-### Language Support
-- **English**: Primary language
-- **Swahili**: National language support
-- **Local Languages**: Kikuyu, Luo, Luhya, Kamba, Kalenjin
-
-### Cultural Adaptation
-- Local university integration
-- Regional skill categories
-- Cultural event support
-- Community-specific features
-
-## 🚀 Future Roadmap
-
-### Phase 1: Core Platform (Current)
+### Phase 1 (Current) - Free Barter System
 - ✅ User registration and profiles
-- ✅ Skill matching and barter system
-- ✅ In-app messaging
-- ✅ Physical meetup coordination
-- ✅ Review and rating system
+- ✅ Skill exchange matching
+- ✅ Real-time messaging
+- ✅ Meetup organization
+- ✅ Rating and review system
 
-### Phase 2: Enhanced Features
-- 🔄 Mobile app development
-- 🔄 Advanced matching algorithms
-- 🔄 Video calling integration
-- 🔄 Skill verification system
-- 🔄 Community forums
+### Phase 2 - Enhanced Features
+- [ ] Advanced search and filtering
+- [ ] Video calling integration
+- [ ] Mobile app development
+- [ ] Swahili language support
+- [ ] Offline functionality
 
-### Phase 3: Monetization
-- 💰 M-Pesa payment integration
-- 💰 Premium user features
-- 💰 Skill certification programs
-- 💰 Corporate partnerships
-- 💰 Advertising platform
+### Phase 3 - Monetization
+- [ ] M-Pesa payment integration
+- [ ] PayPal support
+- [ ] Premium features
+- [ ] Transaction fees
+- [ ] Advertising platform
 
-### Phase 4: Expansion
-- 🌍 Multi-country support
-- 🌍 University partnerships
-- 🌍 Enterprise solutions
-- 🌍 API for third-party integrations
+### Phase 4 - Expansion
+- [ ] Other East African countries
+- [ ] Corporate partnerships
+- [ ] University integrations
+- [ ] Skills certification
+- [ ] Job placement assistance
 
 ## 🤝 Contributing
 
-We welcome contributions from the community! Please follow these guidelines:
+We welcome contributions from the community! Here's how to get started:
 
-1. **Fork the repository**
-2. **Create a feature branch**
-3. **Make your changes**
-4. **Add tests if applicable**
-5. **Submit a pull request**
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ### Development Guidelines
 - Follow TypeScript best practices
-- Use meaningful commit messages
-- Include documentation for new features
-- Test your changes thoroughly
-- Follow the existing code style
+- Write tests for new features
+- Maintain responsive design principles
+- Consider mobile-first approach
+- Include proper error handling
 
 ## 📄 License
 
@@ -296,25 +287,18 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-- University of Nairobi for inspiration
-- Kenya's vibrant student community
-- Open source contributors
-- Beta testers and early adopters
+- Kenyan university students for inspiration
+- Open source community for tools and libraries
+- Contributors and beta testers
+- Local tech community support
 
-## 📞 Contact & Support
+## 📞 Support
 
-- **Website**: [talenthive.co.ke](https://talenthive.co.ke)
 - **Email**: support@talenthive.co.ke
 - **Phone**: +254 700 000 000
-- **Address**: Nairobi, Kenya
-
-### Social Media
-- **Twitter**: [@TalentHiveKE](https://twitter.com/TalentHiveKE)
-- **Facebook**: [TalentHive Kenya](https://facebook.com/TalentHiveKE)
-- **Instagram**: [@TalentHiveKE](https://instagram.com/TalentHiveKE)
+- **Location**: Nairobi, Kenya
+- **Documentation**: [docs.talenthive.co.ke](https://docs.talenthive.co.ke)
 
 ---
 
 **Built with ❤️ for Kenyan students by the TalentHive team**
-
-*Empowering students to share knowledge, build connections, and grow together.*

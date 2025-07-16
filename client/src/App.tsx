@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import { SocketProvider } from './contexts/SocketContext';
+import { ThemeProvider } from './contexts/ThemeContext';
 import PrivateRoute from './components/PrivateRoute';
 import Layout from './components/Layout';
 
@@ -30,57 +31,59 @@ import About from './pages/About';
 
 function App() {
   return (
-    <AuthProvider>
-      <SocketProvider>
-        <Router>
-          <div className="App">
-            <Routes>
-              {/* Public routes */}
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/help" element={<Help />} />
-              
-              {/* Private routes with layout */}
-              <Route element={<PrivateRoute />}>
-                <Route element={<Layout />}>
-                  <Route path="/dashboard" element={<Dashboard />} />
-                  <Route path="/profile" element={<Profile />} />
-                  <Route path="/profile/edit" element={<EditProfile />} />
-                  <Route path="/profile/:userId" element={<UserProfile />} />
-                  
-                  {/* Barter routes */}
-                  <Route path="/barter" element={<BarterRequests />} />
-                  <Route path="/barter/create" element={<CreateBarter />} />
-                  <Route path="/barter/:id" element={<BarterDetail />} />
-                  
-                  {/* Meetup routes */}
-                  <Route path="/meetups" element={<Meetups />} />
-                  <Route path="/meetups/create" element={<CreateMeetup />} />
-                  <Route path="/meetups/:id" element={<MeetupDetail />} />
-                  
-                  {/* Communication routes */}
-                  <Route path="/messages" element={<Messages />} />
-                  <Route path="/messages/:userId" element={<Conversation />} />
-                  
-                  {/* Discovery routes */}
-                  <Route path="/skills" element={<Skills />} />
-                  <Route path="/search" element={<Search />} />
-                  
-                  {/* Settings and utilities */}
-                  <Route path="/notifications" element={<Notifications />} />
-                  <Route path="/settings" element={<Settings />} />
+    <ThemeProvider>
+      <AuthProvider>
+        <SocketProvider>
+          <Router>
+            <div className="App min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
+              <Routes>
+                {/* Public routes */}
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/help" element={<Help />} />
+                
+                {/* Private routes with layout */}
+                <Route element={<PrivateRoute />}>
+                  <Route element={<Layout />}>
+                    <Route path="/dashboard" element={<Dashboard />} />
+                    <Route path="/profile" element={<Profile />} />
+                    <Route path="/profile/edit" element={<EditProfile />} />
+                    <Route path="/profile/:userId" element={<UserProfile />} />
+                    
+                    {/* Barter routes */}
+                    <Route path="/barter" element={<BarterRequests />} />
+                    <Route path="/barter/create" element={<CreateBarter />} />
+                    <Route path="/barter/:id" element={<BarterDetail />} />
+                    
+                    {/* Meetup routes */}
+                    <Route path="/meetups" element={<Meetups />} />
+                    <Route path="/meetups/create" element={<CreateMeetup />} />
+                    <Route path="/meetups/:id" element={<MeetupDetail />} />
+                    
+                    {/* Communication routes */}
+                    <Route path="/messages" element={<Messages />} />
+                    <Route path="/messages/:userId" element={<Conversation />} />
+                    
+                    {/* Discovery routes */}
+                    <Route path="/skills" element={<Skills />} />
+                    <Route path="/search" element={<Search />} />
+                    
+                    {/* Settings and utilities */}
+                    <Route path="/notifications" element={<Notifications />} />
+                    <Route path="/settings" element={<Settings />} />
+                  </Route>
                 </Route>
-              </Route>
-              
-              {/* Redirect unknown routes */}
-              <Route path="*" element={<Navigate to="/" replace />} />
-            </Routes>
-          </div>
-        </Router>
-      </SocketProvider>
-    </AuthProvider>
+                
+                {/* Redirect unknown routes */}
+                <Route path="*" element={<Navigate to="/" replace />} />
+              </Routes>
+            </div>
+          </Router>
+        </SocketProvider>
+      </AuthProvider>
+    </ThemeProvider>
   );
 }
 
